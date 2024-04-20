@@ -17,9 +17,13 @@ public class UserManager {
             statement.setString(2,email);
             statement.setString(3,password);
             int rowsInserted = statement.executeUpdate();
-            System.out.println("Kayıt Başarılı !");
-            return rowsInserted > 0 ;
-        }catch (SQLException e){
+            if (rowsInserted > 0) {
+                System.out.println("Kayıt Başarılı !");
+                return true;
+            } else {
+                System.out.println("Kayıt Başarısız !");
+                return false;
+            }        }catch (SQLException e){
             System.out.println("Kayıt Başarısız !");
             e.printStackTrace();
             return false;
@@ -33,8 +37,13 @@ public class UserManager {
             statement.setString(1,email);
             statement.setString(2,password);
             ResultSet resultSet = statement.executeQuery();
-            System.out.println("Giriş Başarılı !");
-            return resultSet.next();
+            if (resultSet.next()) {
+                System.out.println("Giriş Başarılı !");
+                return true;
+            } else {
+                System.out.println("Giriş Başarısız !");
+                return false;
+            }
         }catch (SQLException e){
             System.out.println("Giriş Başarısız !");
             e.printStackTrace();
@@ -48,8 +57,13 @@ public class UserManager {
             statement.setString(1,newPassword);
             statement.setString(2,email);
             int rowsUpdated = statement.executeUpdate();
-            System.out.println("Şifreniz başarılı bir şekilde değiştirildi !");
-            return rowsUpdated > 0;
+            if (rowsUpdated > 0) {
+                System.out.println("Şifreniz başarılı bir şekilde değiştirildi !");
+                return true;
+            } else {
+                System.out.println("Şifre değiştirme işlemi başarısız !");
+                return false;
+            }
         }catch (SQLException e){
             System.out.println("Şifre değiştirme işlemi başarısız !");
             e.printStackTrace();
