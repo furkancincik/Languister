@@ -71,6 +71,8 @@ public class UserManager {
         }
     }
 
+
+
     public boolean isEmailRegistered(String email){
         String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
         try(PreparedStatement statement = connection.prepareStatement(sql)){
