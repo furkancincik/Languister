@@ -23,8 +23,35 @@ public class AppManager {
 
         boolean running = true;
         while (running) {
+            displayMainMenu();
+            int choice = input.nextInt();
+            input.nextLine();
 
+            switch (choice){
+                case 1:
+                    loginUser(input);
+                    break;
+                case 2:
+                    registerUser(input);
+                    break;
+                case 3:
+                    System.out.println("Kullanıcı ID' sini giriniz : ");
+                    int userID = input.nextInt();
+                    generateAnalysisReport(userID);
+                    break;
+                case 4:
+                    addNewWord(input);
+                    break;
+                case 5:
+                    System.out.println("Uygulamadan çıkılıyor...");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Geçersiz seçim. Lütfen tekrar deneyiniz.");
+                    break;
+            }
         }
+        input.close();
     }
 
     private void displayMainMenu() {
