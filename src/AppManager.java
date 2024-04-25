@@ -55,8 +55,8 @@ public class AppManager {
     }
 
     private void displayMainMenu() {
-        System.out.println("1. Kullanıcı Girişi");
-        System.out.println("2. Yeni Kullanıcı Kaydı");
+        System.out.println("1. Giriş yap : ");
+        System.out.println("2. Kayıt Ol : ");
         System.out.println("3. Analiz Raporu Alma");
         System.out.println("4. Yeni Kelime Ekleme");
         System.out.println("5. Çıkış");
