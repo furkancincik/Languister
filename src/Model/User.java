@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class User {
     //test
+    //test
     private Connection connection;
 
     public User(Connection connection) {
