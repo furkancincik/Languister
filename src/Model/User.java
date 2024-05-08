@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class User {
+    //test
     private Connection connection;
 
     public User(Connection connection) {
