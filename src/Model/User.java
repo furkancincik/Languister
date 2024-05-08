@@ -1,21 +1,23 @@
+package Model;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserManager {
+public class User {
     private Connection connection;
 
-    public UserManager(Connection connection) {
+    public User(Connection connection) {
         this.connection = connection;
     }
 
-    public boolean registerUser(String username, String email, String password){
+    public boolean registerUser(String username, String email, String password) {
         String sql = "INSERT INTO users(username,email,password) VALUES (?,?,?);";
-        try (PreparedStatement statement= connection.prepareStatement(sql)){
-            statement.setString(1,username);
-            statement.setString(2,email);
-            statement.setString(3,password);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, username);
+            statement.setString(2, email);
+            statement.setString(3, password);
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("Kayıt Başarılı !");
@@ -23,7 +25,8 @@ public class UserManager {
             } else {
                 System.out.println("Kayıt Başarısız !");
                 return false;
-            }        }catch (SQLException e){
+            }
+        } catch (SQLException e) {
             System.out.println("Kayıt Başarısız !");
             e.printStackTrace();
             return false;
@@ -31,11 +34,11 @@ public class UserManager {
     }
 
 
-    public boolean loginUser(String email, String password){
+    public boolean loginUser(String email, String password) {
         String sql = "SELECT * FROM users WHERE email =? AND password = ?;";
-        try(PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setString(1,email);
-            statement.setString(2,password);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, email);
+            statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 System.out.println("Giriş Başarılı !");
@@ -44,18 +47,18 @@ public class UserManager {
                 System.out.println("Giriş Başarısız !");
                 return false;
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Giriş Başarısız !");
             e.printStackTrace();
             return false;
         }
     }
 
-    public boolean resetPassword(String email, String newPassword){
+    public boolean resetPassword(String email, String newPassword) {
         String sql = "UPDATE users SET password = ? WHERE email = ?;";
-        try(PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setString(1,newPassword);
-            statement.setString(2,email);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, newPassword);
+            statement.setString(2, email);
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("Şifreniz başarılı bir şekilde değiştirildi !");
@@ -64,7 +67,7 @@ public class UserManager {
                 System.out.println("Şifre değiştirme işlemi başarısız !");
                 return false;
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Şifre değiştirme işlemi başarısız !");
             e.printStackTrace();
             return false;
@@ -72,17 +75,16 @@ public class UserManager {
     }
 
 
-
-    public boolean isEmailRegistered(String email){
+    public boolean isEmailRegistered(String email) {
         String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
-        try(PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setString(1,email);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 int count = resultSet.getInt(1);
-                return count > 0 ;
+                return count > 0;
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -91,5 +93,6 @@ public class UserManager {
     public static boolean isPasswordValid(String password) {
         return password.length() <= 16;
     }
+
 
 }
