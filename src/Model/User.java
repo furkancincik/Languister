@@ -60,12 +60,13 @@ public class User {
         this.connection = connection;
     }
 
-    public boolean registerUser(String username, String email, String password) {
-        String sql = "INSERT INTO users(username,email,password) VALUES (?,?,?);";
+    public boolean registerUser(String username, String email, String password,String name) {
+        String sql = "INSERT INTO users(username,email,password,name) VALUES (?,?,?,?);";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, username);
             statement.setString(2, email);
             statement.setString(3, password);
+            statement.setString(4, name);
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("Kayıt Başarılı !");
@@ -103,8 +104,8 @@ public class User {
     }
 
     public boolean resetPassword(String email, String newPassword) {
-        String sql = "UPDATE users SET password = ? WHERE email = ?;";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        String query = "UPDATE users SET password = ? WHERE email = ?;";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, newPassword);
             statement.setString(2, email);
             int rowsUpdated = statement.executeUpdate();

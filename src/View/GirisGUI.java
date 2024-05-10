@@ -20,23 +20,7 @@ public class GirisGUI extends JFrame {
 
     public GirisGUI() {
 
-
-        for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
-            if ("Metal".equals(info.getName())){
-                try {
-                    UIManager.setLookAndFeel(info.getClassName());
-                } catch (ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                } catch (InstantiationException e) {
-                    throw new RuntimeException(e);
-                } catch (IllegalAccessException e) {
-                    throw new RuntimeException(e);
-                } catch (UnsupportedLookAndFeelException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-
+        Helper.setLayout();
         setContentPane(wrapper);
         setSize(350, 300);
         setTitle(Config.PROJECT_TITLE);
@@ -45,13 +29,11 @@ public class GirisGUI extends JFrame {
         setLocation(Helper.screenLoc("x",getSize()),Helper.screenLoc("y",getSize()));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-
         btn_login.addActionListener(e -> {
             if (txt_username.getText().length() == 0 || txt_pass.getText().length() == 0){
                 JOptionPane.showMessageDialog(null,"Tüm alanları doldurun","Hata",JOptionPane.INFORMATION_MESSAGE);
             }
         });
-
 
     }
 

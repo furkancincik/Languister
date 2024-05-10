@@ -1,4 +1,4 @@
 package Model;
 
-public class HomeScreen{
+public class HomeScreen extends User{
 }
