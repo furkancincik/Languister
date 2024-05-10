@@ -35,9 +35,8 @@ public class GirisGUI extends JFrame {
             if (txt_username.getText().length() == 0 || txt_pass.getText().length() == 0){
                 JOptionPane.showMessageDialog(null,"Tüm alanları doldurun","Hata",JOptionPane.INFORMATION_MESSAGE);
             }else {
-                // Kullanıcı adı ve şifre doğruysa HomeScreenGUI'yi çağır
                 HomeScreenGUI homeScreen = new HomeScreenGUI(new User("password", "username", "name", 1));
-                dispose(); // GirisGUI penceresini kapat
+                dispose();
             }
         });
 
