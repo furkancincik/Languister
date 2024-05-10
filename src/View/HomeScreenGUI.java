@@ -40,13 +40,18 @@ public class HomeScreenGUI extends JFrame {
     private void createUIComponents() {
         JButton leftButton = new JButton("Quiz'e Başla");
         leftButton.setFont(new Font(leftButton.getFont().getName(), Font.PLAIN, 16));
+        leftButton.setFocusPainted(false); // Butonun odaklanıldığında boyutunun değişmemesini sağlar
+        leftButton.setBorderPainted(false); // Butonun kenarlığının görünmemesini sağlar
 
         JButton rightButton = new JButton("Kelime Ekle");
         rightButton.setFont(new Font(rightButton.getFont().getName(), Font.PLAIN, 16));
+        rightButton.setFocusPainted(false); // Butonun odaklanıldığında boyutunun değişmemesini sağlar
+        rightButton.setBorderPainted(false); // Butonun kenarlığının görünmemesini sağlar
 
         fld_views = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftButton, rightButton);
         add(fld_views, BorderLayout.CENTER);
     }
+
 
 
 

@@ -1,6 +1,8 @@
 package View;
 
 import Helper.*;
+import Model.HomeScreen;
+import Model.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,6 +34,10 @@ public class GirisGUI extends JFrame {
         btn_login.addActionListener(e -> {
             if (txt_username.getText().length() == 0 || txt_pass.getText().length() == 0){
                 JOptionPane.showMessageDialog(null,"Tüm alanları doldurun","Hata",JOptionPane.INFORMATION_MESSAGE);
+            }else {
+                // Kullanıcı adı ve şifre doğruysa HomeScreenGUI'yi çağır
+                HomeScreenGUI homeScreen = new HomeScreenGUI(new User("password", "username", "name", 1));
+                dispose(); // GirisGUI penceresini kapat
             }
         });
 
