@@ -16,10 +16,10 @@ public class User {
     }
 
     public User(String password, String username, String name, int id) {
+        this.id = id;
         this.password = password;
         this.username = username;
         this.name = name;
-        this.id = id;
     }
 
     public int getId() {
