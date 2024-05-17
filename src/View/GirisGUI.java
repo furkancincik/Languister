@@ -31,14 +31,22 @@ public class GirisGUI extends JFrame {
         setLocation(Helper.screenLoc("x", getSize()), Helper.screenLoc("y", getSize()));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-
         btn_login.addActionListener(e -> {
-            if ((Helper.isFieldEmpty(fld_user_username) || Helper.isFieldEmpty(fld_user_pass))) {
+            if (Helper.isFieldEmpty(fld_user_username) || Helper.isFieldEmpty(fld_user_pass)) {
                 Helper.showMsg("fill");
             } else {
-                if (User.isLogin(fld_user_username.getText(),fld_user_pass.getToolTipText())){
-                    HomeScreenGUI homeScreen = new HomeScreenGUI(new User(fld_user_pass.getToolTipText(), fld_user_username.getText()));
-                    dispose();
+                String username = fld_user_username.getText();
+                String password = fld_user_pass.getText(); // getToolTipText() yerine getText() kullanın
+                if (User.isLogin(username, password)) {
+                    User user = User.getFetch(username);
+                    if (user != null) {
+                        HomeScreenGUI homeScreen = new HomeScreenGUI(user);
+                        dispose();
+                    } else {
+                        Helper.showMsg("User not found");
+                    }
+                } else {
+                    Helper.showMsg("Invalid login credentials");
                 }
             }
         });

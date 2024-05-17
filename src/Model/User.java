@@ -139,7 +139,7 @@ public class User {
 
 */
     public static User getFetch(String username) {
-        User name = null;
+        User user = null;
 
         String sqlQuery = "SELECT * FROM users WHERE username = ?";
 
@@ -148,15 +148,19 @@ public class User {
             pst.setString(1, username);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                name = new User();
-                name.setId(rs.getInt("name"));
+                user = new User();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return name;
+        return user;
     }
+
 
 
 }
