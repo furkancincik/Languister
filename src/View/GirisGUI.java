@@ -28,14 +28,14 @@ public class GirisGUI extends JFrame {
         setTitle(Config.PROJECT_TITLE);
         setVisible(true);
 
-        setLocation(Helper.screenLoc("x",getSize()),Helper.screenLoc("y",getSize()));
+        setLocation(Helper.screenLoc("x", getSize()), Helper.screenLoc("y", getSize()));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 
         btn_login.addActionListener(e -> {
-            if (fld_user_username.getText().length() == 0 || fld_user_pass.getText().length() == 0){
+            if ((Helper.isFieldEmpty(fld_user_username) || Helper.isFieldEmpty(fld_user_pass))){
                 Helper.showMsg("fill");
-            }else {
+            }else{
                 HomeScreenGUI homeScreen = new HomeScreenGUI(new User("password", "username", "name", 1));
                 dispose();
             }
