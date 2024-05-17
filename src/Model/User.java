@@ -1,5 +1,7 @@
 package Model;
 
+import Helper.DBConnector;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -60,88 +62,18 @@ public class User {
         this.connection = connection;
     }
 
-    public boolean registerUser(String username, String email, String password,String name) {
-        String sql = "INSERT INTO users(username,email,password,name) VALUES (?,?,?,?);";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, username);
-            statement.setString(2, email);
-            statement.setString(3, password);
-            statement.setString(4, name);
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("Kayıt Başarılı !");
-                return true;
-            } else {
-                System.out.println("Kayıt Başarısız !");
-                return false;
-            }
-        } catch (SQLException e) {
-            System.out.println("Kayıt Başarısız !");
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-
-    public boolean loginUser(String email, String password) {
-        String sql = "SELECT * FROM users WHERE email =? AND password = ?;";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, email);
-            statement.setString(2, password);
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                System.out.println("Giriş Başarılı !");
-                return true;
-            } else {
-                System.out.println("Giriş Başarısız !");
-                return false;
-            }
-        } catch (SQLException e) {
-            System.out.println("Giriş Başarısız !");
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public boolean resetPassword(String email, String newPassword) {
-        String query = "UPDATE users SET password = ? WHERE email = ?;";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, newPassword);
-            statement.setString(2, email);
-            int rowsUpdated = statement.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Şifreniz başarılı bir şekilde değiştirildi !");
-                return true;
-            } else {
-                System.out.println("Şifre değiştirme işlemi başarısız !");
-                return false;
-            }
-        } catch (SQLException e) {
-            System.out.println("Şifre değiştirme işlemi başarısız !");
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-
-    public boolean isEmailRegistered(String email) {
-        String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, email);
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                int count = resultSet.getInt(1);
-                return count > 0;
-            }
+    public static boolean add(String name, String username, String password) {
+        String query = "INSERT INTO users (username,password,name) VALUES (?,?,?)";
+        try {
+            PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
+            pr.setString(1, name);
+            pr.setString(2, username);
+            pr.setString(3, password);
+            return pr.executeUpdate() != -1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
-
-    public static boolean isPasswordValid(String password) {
-        return password.length() <= 16;
-    }
-
 
 }
