@@ -35,18 +35,17 @@ public class GirisGUI extends JFrame {
             if (Helper.isFieldEmpty(fld_user_username) || Helper.isFieldEmpty(fld_user_pass)) {
                 Helper.showMsg("fill");
             } else {
-                String username = fld_user_username.getText();
-                String password = fld_user_pass.getText(); // getToolTipText() yerine getText() kullanın
-                if (User.isLogin(username, password)) {
-                    User user = User.getFetch(username);
+                if (User.isLogin(fld_user_username.getText(), fld_user_pass.getPassword().toString())) {
+                    User user = User.getFetch(fld_user_username.getText());
                     if (user != null) {
                         HomeScreenGUI homeScreen = new HomeScreenGUI(user);
+                        Helper.showMsg("done");
                         dispose();
                     } else {
-                        Helper.showMsg("User not found");
+                        Helper.showMsg("error");
                     }
                 } else {
-                    Helper.showMsg("Invalid login credentials");
+                    Helper.showMsg("Geçersiz giriş bilgileri.Tekrar Deneyiniz.");
                 }
             }
         });
@@ -55,6 +54,7 @@ public class GirisGUI extends JFrame {
         üyeOlButton.addActionListener(e -> {
             UyeOlGUI yeniUye = new UyeOlGUI();
         });
+
     }
 
 

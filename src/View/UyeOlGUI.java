@@ -39,9 +39,5 @@ public class UyeOlGUI extends JFrame {
     }
 
 
-    public static void main(String[] args) {
-        UyeOlGUI u1 = new UyeOlGUI();
-    }
-
 
 }

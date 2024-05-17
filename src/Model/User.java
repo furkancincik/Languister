@@ -95,10 +95,10 @@ public class User {
             ResultSet rs = st.executeQuery(sqlQuery);
             while (rs.next()) {
                 obj = new User();
-                obj.setId(rs.getInt("id"));
-                obj.setName(rs.getString("name"));
+                obj.setId(rs.getInt("user_id"));
                 obj.setUsername(rs.getString("username"));
                 obj.setPassword(rs.getString("password"));
+                obj.setName(rs.getString("name"));
                 userList.add(obj);
             }
         } catch (SQLException e) {
@@ -108,36 +108,6 @@ public class User {
     }
 
 
-    /*
-
-
-    public static boolean add(String name, String username, String password, String type) {
-        String sqlQuery = "INSERT INTO users (name, username, password, type) VALUES (?,?,?,?)";
-        User findUser = User.getFetch(username);
-        if (findUser != null) {
-            Helper.showMsg("Bu kullanıcı adı kullanılıyor.Başka bir kullanıcı adı giriniz.");
-            return false;
-        }
-        try {
-            PreparedStatement pst = DBConnector.getInstance().prepareStatement(sqlQuery);
-            pst.setString(1, name);
-            pst.setString(2, username);
-            pst.setString(3, password);
-            pst.setString(4, type);
-            int result = pst.executeUpdate();
-
-            if (result == -1) {
-                Helper.showMsg("error");
-            }
-            return result != -1;
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return true;
-    }
-
-*/
     public static User getFetch(String username) {
         User user = null;
 
@@ -150,9 +120,9 @@ public class User {
             if (rs.next()) {
                 user = new User();
                 user.setId(rs.getInt("id"));
-                user.setName(rs.getString("name"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
+                user.setName(rs.getString("name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
