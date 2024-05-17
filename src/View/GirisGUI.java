@@ -33,11 +33,13 @@ public class GirisGUI extends JFrame {
 
 
         btn_login.addActionListener(e -> {
-            if ((Helper.isFieldEmpty(fld_user_username) || Helper.isFieldEmpty(fld_user_pass))){
+            if ((Helper.isFieldEmpty(fld_user_username) || Helper.isFieldEmpty(fld_user_pass))) {
                 Helper.showMsg("fill");
-            }else{
-                HomeScreenGUI homeScreen = new HomeScreenGUI(new User("password", "username", "name", 1));
-                dispose();
+            } else {
+                if (User.isLogin(fld_user_username.getText(),fld_user_pass.getToolTipText())){
+                    HomeScreenGUI homeScreen = new HomeScreenGUI(new User(fld_user_pass.getToolTipText(), fld_user_username.getText()));
+                    dispose();
+                }
             }
         });
 
