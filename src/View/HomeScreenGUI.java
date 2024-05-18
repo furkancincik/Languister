@@ -6,6 +6,8 @@ import Model.User;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -14,6 +16,8 @@ public class HomeScreenGUI extends JFrame {
     private JButton btn_progress;
     private JButton btn_settings;
     private JLabel lbl_welcome;
+    private JButton btn_quiz;
+    private JButton btn_add_word;
     private JSplitPane fld_views;
     private final User user;
 
@@ -38,6 +42,15 @@ public class HomeScreenGUI extends JFrame {
 
         String welcomeMessage = Helper.welcomeUser(user);
         Helper.showMsg(welcomeMessage);
+
+
+
+        btn_quiz.addActionListener(e -> {
+
+        });
+
+
+
     }
 
 
