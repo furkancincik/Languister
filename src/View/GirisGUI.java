@@ -19,15 +19,12 @@ public class GirisGUI extends JFrame {
     private JButton şifremiUnuttumButton;
     private JButton üyeOlButton;
 
-
     public GirisGUI() {
-
         Helper.setLayout();
         setContentPane(wrapper);
         setSize(350, 300);
         setTitle(Config.PROJECT_TITLE);
         setVisible(true);
-
         setLocation(Helper.screenLoc("x", getSize()), Helper.screenLoc("y", getSize()));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -35,7 +32,6 @@ public class GirisGUI extends JFrame {
             if (Helper.isFieldEmpty(fld_user_username) || Helper.isFieldEmpty(fld_user_pass)) {
                 Helper.showMsg("fill");
             } else {
-<<<<<<< Updated upstream
                 if (User.isLogin(fld_user_username.getText(), new String(fld_user_pass.getPassword()))) {
                     User user = User.getFetch(fld_user_username.getText());
                     if (user != null) {
@@ -45,31 +41,18 @@ public class GirisGUI extends JFrame {
                     } else {
                         Helper.showMsg("error");
                     }
-                } else{
+                } else {
                     Helper.showMsg("Geçersiz giriş bilgileri.Tekrar Deneyiniz.");
-=======
-                if (User.isLogin(fld_user_username.getText(),fld_user_pass.getPassword().toString()){
-                    HomeScreenGUI homeScreen = new HomeScreenGUI(new User(fld_user_username.getText());
-                    dispose();
->>>>>>> Stashed changes
                 }
             }
         });
 
-
-
         üyeOlButton.addActionListener(e -> {
             UyeOlGUI yeniUye = new UyeOlGUI();
         });
-
     }
-
 
     public static void main(String[] args) {
-
         GirisGUI g = new GirisGUI();
-
     }
-
-
 }
