@@ -116,4 +116,25 @@ public class User {
         }
         return obj;
     }
+
+
+    public boolean updatePassword(String newPassword) {
+        String query = "UPDATE users SET password = ? WHERE user_id = ?";
+        try {
+            PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
+            pr.setString(1, newPassword);
+            pr.setInt(2, this.id);
+            return pr.executeUpdate() != -1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean checkPassword(String username, String password) {
+        User user = getFetch(username);
+        return user != null && user.getPassword().equals(password);
+    }
+
+
 }

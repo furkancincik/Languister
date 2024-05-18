@@ -39,4 +39,6 @@ public class UyeOlGUI extends JFrame {
             }
         });
     }
+
+
 }
