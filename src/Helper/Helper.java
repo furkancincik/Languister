@@ -35,7 +35,7 @@ public class Helper {
 
     public static void setLayout() {
         for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-            if ("Metal".equals(info.getName())) {
+            if ("Nimbus".equals(info.getName())) {
                 try {
                     UIManager.setLookAndFeel(info.getClassName());
                 } catch (ClassNotFoundException e) {
@@ -79,6 +79,9 @@ public class Helper {
     }
 
 
+    public static String welcomeUser(User user) {
+        return "Hoşgeldiniz, " + user.getName();
+    }
 
 
 }

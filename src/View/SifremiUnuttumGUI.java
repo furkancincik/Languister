@@ -6,10 +6,12 @@ import javax.swing.*;
 
 public class SifremiUnuttumGUI extends JFrame{
     private JPanel panel1;
-    private JTextArea fld_user_username;
-    private JTextField fld_user_password;
-    private JTextField fld_user_password2;
     private JPanel wrapper;
+    private JTextField fld_user_username;
+    private JTextField fld_user_pass;
+    private JTextField fld_user_pass2;
+    private JButton button1;
+    private JButton şifreYenileButton;
 
     public SifremiUnuttumGUI(){
         Helper.setLayout();

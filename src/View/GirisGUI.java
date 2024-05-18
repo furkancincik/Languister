@@ -16,8 +16,8 @@ public class GirisGUI extends JFrame {
     private JLabel jlabelpass;
     private JPasswordField fld_user_pass;
     private JButton btn_login;
-    private JButton şifremiUnuttumButton;
-    private JButton üyeOlButton;
+    private JButton btn_sifremiunuttum;
+    private JButton btn_uyeol;
 
     public GirisGUI() {
         Helper.setLayout();
@@ -36,7 +36,6 @@ public class GirisGUI extends JFrame {
                     User user = User.getFetch(fld_user_username.getText());
                     if (user != null) {
                         HomeScreenGUI homeScreen = new HomeScreenGUI(user);
-                        Helper.showMsg("done");
                         dispose();
                     } else {
                         Helper.showMsg("error");
@@ -47,9 +46,14 @@ public class GirisGUI extends JFrame {
             }
         });
 
-        üyeOlButton.addActionListener(e -> {
+        btn_uyeol.addActionListener(e -> {
             UyeOlGUI yeniUye = new UyeOlGUI();
         });
+
+        btn_sifremiunuttum.addActionListener(e -> {
+            SifremiUnuttumGUI sifreYenile = new SifremiUnuttumGUI();
+        });
+
     }
 
     public static void main(String[] args) {

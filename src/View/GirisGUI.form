@@ -14,8 +14,10 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="true"/>
         </constraints>
         <properties>
-          <background color="-4135522"/>
+          <background color="-13947600"/>
+          <enabled value="true"/>
           <font name="JetBrains Mono" size="18" style="1"/>
+          <foreground color="-13947600"/>
         </properties>
         <border type="none"/>
         <children>
@@ -25,6 +27,8 @@
             </constraints>
             <properties>
               <font name="JetBrains Mono" size="24"/>
+              <foreground color="-3750202"/>
+              <horizontalAlignment value="10"/>
               <text value="Languister"/>
             </properties>
           </component>
@@ -34,6 +38,7 @@
             </constraints>
             <properties>
               <font name="JetBrains Mono" size="24" style="0"/>
+              <foreground color="-8092540"/>
               <text value="Kullanıcı Girişi"/>
             </properties>
           </component>
@@ -90,7 +95,7 @@
               <text value="Giriş"/>
             </properties>
           </component>
-          <component id="4d18c" class="javax.swing.JButton" binding="şifremiUnuttumButton" default-binding="true">
+          <component id="4d18c" class="javax.swing.JButton" binding="btn_sifremiunuttum">
             <constraints>
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -98,7 +103,7 @@
               <text value="Şifremi Unuttum"/>
             </properties>
           </component>
-          <component id="1a08d" class="javax.swing.JButton" binding="üyeOlButton" default-binding="true">
+          <component id="1a08d" class="javax.swing.JButton" binding="btn_uyeol">
             <constraints>
               <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
