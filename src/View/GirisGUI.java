@@ -40,7 +40,7 @@ public class GirisGUI extends JFrame {
                     if (user != null) {
                         HomeScreenGUI homeScreen = new HomeScreenGUI(user);
                         Helper.showMsg("done");
-                        dispose(); 
+                        dispose();
                     } else {
                         Helper.showMsg("error");
                     }

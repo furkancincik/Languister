@@ -33,7 +33,7 @@
                 </constraints>
                 <properties>
                   <focusable value="false"/>
-                  <text value="    settings    "/>
+                  <text value="        Quiz"/>
                 </properties>
               </component>
               <component id="73cbf" class="javax.swing.JButton">
@@ -42,7 +42,7 @@
                 </constraints>
                 <properties>
                   <focusable value="false"/>
-                  <text value="    settings    "/>
+                  <text value="    Kelime Ekleme    "/>
                 </properties>
               </component>
             </children>
