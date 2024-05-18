@@ -35,6 +35,7 @@ public class GirisGUI extends JFrame {
             if (Helper.isFieldEmpty(fld_user_username) || Helper.isFieldEmpty(fld_user_pass)) {
                 Helper.showMsg("fill");
             } else {
+<<<<<<< Updated upstream
                 if (User.isLogin(fld_user_username.getText(), new String(fld_user_pass.getPassword()))) {
                     User user = User.getFetch(fld_user_username.getText());
                     if (user != null) {
@@ -46,6 +47,11 @@ public class GirisGUI extends JFrame {
                     }
                 } else{
                     Helper.showMsg("Geçersiz giriş bilgileri.Tekrar Deneyiniz.");
+=======
+                if (User.isLogin(fld_user_username.getText(),fld_user_pass.getPassword().toString()){
+                    HomeScreenGUI homeScreen = new HomeScreenGUI(new User(fld_user_username.getText());
+                    dispose();
+>>>>>>> Stashed changes
                 }
             }
         });

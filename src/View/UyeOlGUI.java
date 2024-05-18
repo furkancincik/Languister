@@ -39,5 +39,8 @@ public class UyeOlGUI extends JFrame {
     }
 
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }

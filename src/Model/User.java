@@ -16,9 +16,13 @@ public class User {
     }
 
     public User(String password, String username, String name, int id) {
+<<<<<<< Updated upstream
         this.id = id;
         this.password = password;
+=======
+>>>>>>> Stashed changes
         this.username = username;
+        this.password = password;
         this.name = name;
     }
 
@@ -108,8 +112,45 @@ public class User {
     }
 
 
+<<<<<<< Updated upstream
     public static User getFetch(String username) {
         User user = null;
+=======
+    /*
+
+
+    public static boolean add(String name, String username, String password, String type) {
+        String sqlQuery = "INSERT INTO users (name, username, password, type) VALUES (?,?,?,?)";
+        User findUser = User.getFetch(username);
+        if (findUser != null) {
+            Helper.showMsg("Bu kullanıcı adı kullanılıyor.Başka bir kullanıcı adı giriniz.");
+            return false;
+        }
+        try {
+            PreparedStatement pst = DBConnector.getInstance().prepareStatement(sqlQuery);
+            pst.setString(1, name);
+            pst.setString(2, username);
+            pst.setString(3, password);
+            pst.setString(4, type);
+            int result = pst.executeUpdate();
+
+            if (result == -1) {
+                Helper.showMsg("error");
+            }
+            return result != -1;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return true;
+    }
+
+*/
+
+
+    public static User getFetch(String username) {
+        User obj = null;
+>>>>>>> Stashed changes
 
         String sqlQuery = "SELECT * FROM users WHERE username = ?";
 
@@ -118,17 +159,29 @@ public class User {
             pst.setString(1, username);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
+<<<<<<< Updated upstream
                 user = new User();
                 user.setId(rs.getInt("id"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setName(rs.getString("name"));
+=======
+                obj = new User();
+                obj.setId(rs.getString());
+                obj.setId(rs.getInt("username"));
+                obj.setId(rs.getInt("password"));
+                obj.setId(rs.getInt("name"));
+>>>>>>> Stashed changes
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+<<<<<<< Updated upstream
         return user;
+=======
+        return obj;
+>>>>>>> Stashed changes
     }
 
 
