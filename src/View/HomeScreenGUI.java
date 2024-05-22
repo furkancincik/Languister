@@ -52,6 +52,10 @@ public class HomeScreenGUI extends JFrame {
         btn_add_word.addActionListener(e -> {
             new AddWordGUI();
         });
+
+        btn_settings.addActionListener(e -> {
+            new SettingGUI(user);
+        });
     }
 
 
