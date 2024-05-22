@@ -3,6 +3,8 @@ package Model;
 import Helper.DBConnector;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Words {
     private int id;
@@ -120,4 +122,34 @@ public class Words {
             e.printStackTrace();
         }
     }
+
+
+    public static List<Words> getRandomWords(int count) {
+        List<Words> allWords = getAllWords(); // Tüm kelimeleri al
+        Collections.shuffle(allWords); // Tüm kelimeleri karıştır
+        return allWords.subList(0, Math.min(count, allWords.size())); // İlk count kelimeyi seç
+    }
+
+    public static List<Words> getAllWords() {
+        List<Words> wordList = new ArrayList<>();
+        String query = "SELECT * FROM words";
+
+        try {
+            PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()) {
+                Words word = new Words();
+                word.setId(rs.getInt("word_id"));
+                word.setEnglishWord(rs.getString("english_word"));
+                word.setTurkishTranslation(rs.getString("turkish_translation"));
+                word.setExampleSentences(rs.getString("example_sentences"));
+                word.setCreatedAt(rs.getTimestamp("created_at"));
+                wordList.add(word);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return wordList;
+    }
+
 }
