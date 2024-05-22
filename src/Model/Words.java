@@ -125,9 +125,9 @@ public class Words {
 
 
     public static List<Words> getRandomWords(int count) {
-        List<Words> allWords = getAllWords(); // Tüm kelimeleri al
-        Collections.shuffle(allWords); // Tüm kelimeleri karıştır
-        return allWords.subList(0, Math.min(count, allWords.size())); // İlk count kelimeyi seç
+        List<Words> allWords = getAllWords();
+        Collections.shuffle(allWords);
+        return allWords.subList(0, Math.min(count, allWords.size()));
     }
 
     public static List<Words> getAllWords() {
