@@ -45,6 +45,7 @@ public class HomeScreenGUI extends JFrame {
 
 
         btn_quiz.addActionListener(e -> {
+            new QuizGUI(user);
         });
 
 
