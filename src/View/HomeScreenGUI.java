@@ -44,11 +44,8 @@ public class HomeScreenGUI extends JFrame {
         Helper.showMsg(welcomeMessage);
 
 
-
         btn_quiz.addActionListener(e -> {
-
         });
-
 
 
     }
