@@ -25,7 +25,7 @@ public class QuizGUI extends JFrame {
         initComponents(); // GUI bileşenlerini başlatan metodu çağırın
         setContentPane(wrapper);
         setTitle(Config.PROJECT_TITLE);
-        setSize(600, 500);
+        setSize(400, 300);
         setLocation(Helper.screenLoc("x", getSize()), Helper.screenLoc("y", getSize()));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -56,6 +56,9 @@ public class QuizGUI extends JFrame {
         txt_question.setEditable(false); // Kullanıcı tarafından düzenlenemez
         txt_question.setLineWrap(true); // Satır taşması durumunda otomatik olarak satırı kaydır
         txt_question.setWrapStyleWord(true); // Kelimeleri kırparak satır taşmasını sağlar
+        txt_question.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 24)); // Font boyutunu 24 olarak ayarla
+        txt_question.setAlignmentX(Component.CENTER_ALIGNMENT); // Yatay hizalamayı ayarla
+        txt_question.setAlignmentY(Component.CENTER_ALIGNMENT); // Dikey hizalamayı ayarla
         wrapper.add(txt_question, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 10));
@@ -69,6 +72,8 @@ public class QuizGUI extends JFrame {
         buttonPanel.add(btn_option4);
         wrapper.add(buttonPanel, BorderLayout.SOUTH);
     }
+
+
 
     private void loadNextQuestion() {
         if (currentWordIndex < dueWords.size()) {
@@ -98,8 +103,7 @@ public class QuizGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        // Test için bir kullanıcı oluşturun veya mevcut bir kullanıcıyı kullanın
-        User testUser = new User(); // Kullanıcıyı doğru şekilde oluşturduğunuzdan emin olun
+        User testUser = new User();
         new QuizGUI(testUser);
     }
 }

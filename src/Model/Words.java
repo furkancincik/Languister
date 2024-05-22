@@ -152,4 +152,21 @@ public class Words {
         return wordList;
     }
 
+
+
+    public static void addWord(String turkishWord, String englishWord, String exampleSentence) {
+        String query = "INSERT INTO words (english_word, turkish_translation, example_sentences) VALUES (?, ?, ?)";
+
+        try {
+            PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
+            pr.setString(1, englishWord);
+            pr.setString(2, turkishWord);
+            pr.setString(3, exampleSentence);
+            pr.executeUpdate();
+            System.out.println("Kelime başarıyla veritabanına eklendi.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
