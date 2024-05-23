@@ -54,7 +54,17 @@ public class Words {
         this.englishWord = englishWord;
     }
 
-    // Sınav için gerekli metotlar
+    private byte[] imageData;
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
+
+
     public static ArrayList<Words> getDueWords(int userId) {
         ArrayList<Words> wordList = new ArrayList<>();
         String query = "SELECT w.* FROM words w INNER JOIN user_question_relationship uqr ON w.word_id = uqr.word_id " +
@@ -153,20 +163,22 @@ public class Words {
     }
 
 
-
-    public static void addWord(String turkishWord, String englishWord, String exampleSentence) {
-        String query = "INSERT INTO words (english_word, turkish_translation, example_sentences) VALUES (?, ?, ?)";
+    public static void addWord(String turkishWord, String englishWord, String exampleSentence, byte[] imageData) {
+        String query = "INSERT INTO words (english_word, turkish_translation, example_sentences, image_data) VALUES (?, ?, ?, ?)";
 
         try {
             PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
             pr.setString(1, englishWord);
             pr.setString(2, turkishWord);
             pr.setString(3, exampleSentence);
+            pr.setBytes(4, imageData); // Görsel byte dizisi
             pr.executeUpdate();
-            System.out.println("Kelime başarıyla veritabanına eklendi.");
+            System.out.println("Kelime ve görsel başarıyla veritabanına eklendi.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+
 
 }

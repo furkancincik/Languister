@@ -2,6 +2,8 @@ package View;
 
 import Helper.*;
 import Model.User;
+import View.QuizGUI.QuizGUI;
+import View.QuizGUI.QuizGUI;
 
 import javax.swing.*;
 import java.awt.*;
