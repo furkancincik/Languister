@@ -4,8 +4,7 @@ import Helper.*;
 import Model.User;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 
 public class GirisGUI extends JFrame {
     private JPanel wrapper;
@@ -35,6 +34,9 @@ public class GirisGUI extends JFrame {
                 if (User.isLogin(fld_user_username.getText(), new String(fld_user_pass.getPassword()))) {
                     User user = User.getFetch(fld_user_username.getText());
                     if (user != null) {
+                        Font currentFont = UIManager.getFont("Label.font");
+                        Helper.updateUIFont(currentFont);
+
                         HomeScreenGUI homeScreen = new HomeScreenGUI(user);
                         dispose();
                     } else {
@@ -53,7 +55,6 @@ public class GirisGUI extends JFrame {
         btn_sifremiunuttum.addActionListener(e -> {
             SifremiUnuttumGUI sifreYenile = new SifremiUnuttumGUI();
         });
-
     }
 
     public static void main(String[] args) {
